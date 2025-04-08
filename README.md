@@ -1,16 +1,32 @@
 # forms
 
+## The `forms` Object
+
+`forms` is a JavaScript object stored in localStorage as a JSON string.
+
+```
+{
+    activeFormIdx: <null || INT>,
+    editMode: <true || false>,
+    createFormIdxs: {
+        column,
+        question,
+    }
+    formsArr: <[{}, {}, etc]>
+}
+```
+
 ## A JSON form
 
-The following is an example of a JSON form which will work with this website. The `rowNumber` and `userResponses` properties will be modified as the user enters data into the form.
+The following is an example of a JSON form which will work with this website. The `userResponses` property will be modified as the user enters data into the form.
 
 ```
 {
     "description": "A record of observations made during a bee hive inspection",
     "fileNamePrefix": "hive",
-    "items": [
+    "columns": [
         {
-            "title": "Hive Name",
+            "heading": "Hive Name",
             "questions": [
                 {
                     "category": "text"
@@ -19,7 +35,7 @@ The following is an example of a JSON form which will work with this website. Th
             "userResponses": {},
         },
         {
-            "title": "Hive Name",
+            "heading": "Hive Name",
             "questions": [
                 {
                     "category": "text"
@@ -28,7 +44,6 @@ The following is an example of a JSON form which will work with this website. Th
             "userResponses": {},
         },
     ],
-    "rowNumber": 0,
     "title": "Hive Inspection Record",
 }
 ```
