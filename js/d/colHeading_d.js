@@ -1,4 +1,4 @@
-export function colHeading(dom) {
+export function colHeading_d(dom) {
     
     dom.els.colHeading_d.addEventListener("click", event => {
         if (event.target.id === "colHeading_dCancel_btn") {
@@ -10,7 +10,7 @@ export function colHeading(dom) {
             }
         }
         const forms = JSON.parse(localStorage.getItem("forms"));
-        const activeFormsIdx = forms.activeFormsIdx;
+        const activeFormsIdx = forms.activeIdxs.form;
         const form = forms.formsArr[activeFormsIdx];
         
         
@@ -24,7 +24,7 @@ export function colHeading(dom) {
             col.questions = [];
             col.userResponses = {};
             const colIdx = (form.columns.push(col) - 1);
-            forms.createFormIdxs.column = colIdx;
+            forms.activeIdxs.column = colIdx;
             localStorage.setItem("forms", JSON.stringify(forms));
             dom.showDiv(["question_d"]);
         }

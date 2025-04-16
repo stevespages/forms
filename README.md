@@ -16,6 +16,19 @@
 }
 ```
 
+alternatively...
+
+```
+{
+    activeIdxs: {
+        column: <null || INT>,
+        form: <null || INT>,
+        question: <null || INT>,
+    editMode: <true || false>,
+    formsArr: <[{}, {}, etc]>
+}
+```
+
 ## A JSON form
 
 The following is an example of a JSON form which will work with this website. The `userResponses` property will be modified as the user enters data into the form.

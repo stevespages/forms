@@ -5,10 +5,22 @@ export const dom = {
     consoleLogEls: function() {
         console.log("***********");
         console.log("dom.els:");
+        /*
         Object.keys(this.els).sort().forEach(key => {
             const spaces = generateSpacesFromUnderscores(key);
             console.log(spaces,key);
         });
+        */
+
+        for (const [key, value] of Object.entries(this.els)) {
+            const spaces = generateSpacesFromUnderscores(key);
+            if (value.dataset.codeComment) {
+                console.log(spaces, key, "//" + value.dataset.codeComment);
+            } else {
+                console.log(spaces,key);
+            }
+        }
+       
         console.log("***********");
         function generateSpacesFromUnderscores(string) {
             const numberOfUnderscores = string.split("_").length - 1;
