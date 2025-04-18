@@ -28,6 +28,7 @@ export function createForm_d(dom) {
             const activeFormsIdx = (forms.formsArr.push(newForm) - 1);
             forms.activeIdxs.form = activeFormsIdx;
             localStorage.setItem("forms", JSON.stringify(forms));
+            dom.els.colHeading_d_inp.value = "";
             dom.showDiv(["colHeading_d"]);
         }
     })

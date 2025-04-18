@@ -1,6 +1,9 @@
-export function qChoice_qDate_qText_d(dom) {
+export function qChoice_qDate_qText_d(dom, showForm) {
 
     dom.els.qChoice_d.addEventListener("click", event => {
+        if (event.target.id === "qChoice_dCancel_btn") {
+            dom.showDiv(["question_d"]);
+        }
         if (event.target.id === "qChoice_dChoiceOk_btn") {
             const li = document.createElement("li");
             li.classList.add("qChoice_d_li");
@@ -26,60 +29,40 @@ export function qChoice_qDate_qText_d(dom) {
         }
     })
 
-    dom.els.qDate_dOk_btn.addEventListener("click", (event) => {
-        const options = {}
-        options.includeTime = dom.els.qDate_dIncludeTime_inp.checked;
-        options.includeYear = dom.els.qDate_dIncludeYear_inp.checked;
-        options.showCurrent = dom.els.qDate_dShowCurrent_inp.checked;
-        /*
-        Array.from(optionInps).forEach(optionInp => {
-            const optionObject = {};
-            optionObject[optionInp.name] = optionInp.checked;
-            options.push(optionObject)
-        })
-        */
-        const question =
-            {
-                category: "date",
-                options: options,
-            };
-        addQToForm(question);
-        dom.showDiv(["showForm_d", "showForm_dInner_d"]);
-        showForm(dom)
+    dom.els.qDate_d.addEventListener("click", event => {
+        if (event.target.id === "qDate_dCancel_btn") {
+            dom.showDiv(["question_d"]);
+        }
+        if (event.target.id === "qDate_dOk_btn") {
+            const options = {}
+            options.includeTime = dom.els.qDate_dIncludeTime_inp.checked;
+            options.includeYear = dom.els.qDate_dIncludeYear_inp.checked;
+            options.showCurrent = dom.els.qDate_dShowCurrent_inp.checked;
+            const question =
+                {
+                    category: "date",
+                    options: options,
+                };
+            addQToForm(question);
+            dom.showDiv(["showForm_d", "showForm_dInner_d"]);
+            showForm(dom);
+        }
     })
 
-    dom.els.qText_dOk_btn.addEventListener("click", () => {
-        const question = 
-            {
-                category: "text",
-            };
-        addQToForm(question);
-        dom.showDiv(["showForm_d", "showForm_dInner_d"]);
-        showForm(dom)
-    });
-
-    function showForm(dom) {
-        const forms = JSON.parse(localStorage.getItem("forms"));
-        const form = forms.formsArr[forms.activeIdxs.form];
-        dom.els.showForm_dInner_d.innerHTML = "";
-        const titleP = document.createElement("p");
-        titleP.innerHTML = "title: " + form.title;
-        const descriptionP = document.createElement("p");
-        descriptionP.innerHTML = "description: " + form.description;
-        const fileNamePrefixP = document.createElement("p");
-        fileNamePrefixP.innerHTML = "file name prefix: " + form.formFileNamePrefix;
-        dom.els.showForm_dInner_d.append(titleP, fileNamePrefixP);
-        form.columns.forEach((column, i) => {
-            const columnP = document.createElement("p");
-            columnP.innerHTML = "column " + parseInt(i + 1) + " " + column.heading;
-            dom.els.showForm_dInner_d.append(columnP);
-            column.questions.forEach(question => {
-                const questionP = document.createElement("p");
-                questionP.innerHTML = JSON.stringify(question);
-                dom.els.showForm_dInner_d.append(questionP);
-            })
-        })
-    }
+    dom.els.qText_d.addEventListener("click", event => {
+        if (event.target.id === "qText_dCancel_btn") {
+            dom.showDiv(["question_d"]);
+        }
+        if (event.target.id === "qText_dOk_btn") {
+            const question = 
+                {
+                    category: "text",
+                };
+            addQToForm(question);
+            dom.showDiv(["showForm_d", "showForm_dInner_d"]);
+            showForm(dom);
+        }
+    })
 
     function addQToForm(q) {
         const forms = JSON.parse(localStorage.getItem("forms"));

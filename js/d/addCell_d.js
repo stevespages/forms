@@ -13,31 +13,23 @@ export function addCell_d(dom) {
             for (const value of formData.values()) {
                 userResponse += value;
             }
-            /*
-            formData.forEach(datum => {
-                userResponse += datum + " ";
-            });
-            */
             const forms = JSON.parse(localStorage.getItem("forms"));
             const colIdx = forms.activeIdxs.column;
             const form = forms.formsArr[forms.activeIdxs.form];
             form.columns[colIdx].userResponses[form.numberOfRows] = userResponse;
             localStorage.setItem("forms", JSON.stringify(forms));
+            updateUserResponseSpan(userResponse, colIdx);
+            dom.showDiv(["addRow_d"]);
+
+            function updateUserResponseSpan(userResponse, colIdx) {
+                const spans = document.querySelectorAll(".user-response-span");
+                Array.from(spans).forEach(span => {
+                    if (span.dataset.colIdx === colIdx) {
+                        span.textContent = " " + userResponse;
+                    }
+                })
+            }
         }
     })
-
-    /*
-    okBtn.addEventListener("click", () => {
-        const formData = new FormData(form);
-        let userNote = "";
-        formData.forEach(datum => {
-            userNote += datum + " ";
-            console.log("datum: ", datum);
-        })
-        this.formsSpec.forms[key].userNote = userNote;
-        dom.div.form.innerHTML = "";
-        this.createFormsSummary(dom);
-    })
-    */
 
 }

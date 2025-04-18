@@ -12,6 +12,9 @@
         button, input {
             display: block;
         }
+        .user-response-span {
+            color: green;
+        }
     </style>
     <title>forms</title>
 </head>
@@ -40,6 +43,8 @@
 
     <div id="edit_d">
         <button id="edit_dCancel_btn">cancel</button>
+        <button id="edit_dOk_btn">ok</button>
+        <input id="edit_d_inp" />
     </div>
 
     <div id="formMenu_d" data-code-comment="from home_d">
@@ -50,7 +55,7 @@
             <button id="formMenu_dDescription_btn">description</button>
             <button id="formMenu_dDownloadForm_btn">download form</button>
             <button id="formMenu_dDownloadRows_btn">download rows</button>
-            <button id="formMenu_dEditForm_btn">edit form</button>
+            <button id="formMenu_dEdit_btn">edit form</button>
             <button id="formMenu_dEmailForm_btn">email form</button>
             <button id="formMenu_dEmailRows_btn">email rows</button>
             <button id="formMenu_dJsonAll_btn">JSON all</button>
@@ -70,6 +75,11 @@
 
         <button id="mainMenu_dCreateForm_btn">create form</button>
         <button id="mainMenu_dUploadJsonForm_btn">upload JSON form</button>
+    </div>
+
+    <div id="viewAllRows_d">
+        <button id="viewAllRows_dCancel_btn">cancel</button>
+        <table id="viewAllRows_d_table"></table>
     </div>
 
     <!-- divs for creating form -->
@@ -109,7 +119,8 @@
     </div>
 
     <div id="qChoice_d" data-code-comment="from question_d">
-        <h1 id="qChoice_d_h1"></h1>
+        <button id="qChoice_dCancel_btn">cancel</button>
+        <h2 id="qChoice_d_h2"></h2>
         <label>
             choices
             <input id="qChoice_d_inp" />
@@ -120,7 +131,8 @@
     </div>
 
     <div id="qDate_d" data-code-comment="from question_d">
-        <h1>Date Question</h1>
+        <button id="qDate_dCancel_btn">cancel</button>
+        <h2>Date Question</h2>
             <label>include time
                 <input
                     id="qDate_dIncludeTime_inp"
@@ -143,12 +155,12 @@
     </div>
 
     <div id="qText_d" data-code-comment="from question_d">
-        <h1 id="text-q_div_h2">Text Question</h1>
+        <button id="qText_dCancel_btn">cancel</button>
+        <h2 id="text-q_div_h2">Text Question</h2>
         <button class="q-ok-btn" id="qText_dOk_btn">ok</button>
     </div>
 
     <div id="showForm_d" data-code-comment="from qChoice_d, qDate_d, qText_d">
-        <p>show form...</p>
         <button id="showForm_dNewCol_btn">new column</button>
         <button id="showForm_dAddQ_btn">add question</button>
         <button id="showForm_dEnd_btn">end</button>
