@@ -17,7 +17,10 @@ export function addRow_d(dom) {
             })
             dom.showDiv(["addCell_d"]);
         }
-        if (event.target.id === "addRow_dCancel_btn") {
+        // we should have a cancel btn. This would need to remove all the
+        // last element in every form.column.userResponses array and then
+        // direcct the user to home_d
+        if (event.target.id === "addRow_dOk_btn") {
             dom.showDiv(["home_d"]);
         }
     })

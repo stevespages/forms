@@ -16,7 +16,12 @@ export function addCell_d(dom) {
             const forms = JSON.parse(localStorage.getItem("forms"));
             const colIdx = forms.activeIdxs.column;
             const form = forms.formsArr[forms.activeIdxs.form];
-            form.columns[colIdx].userResponses[form.numberOfRows] = userResponse;
+            const lastUserResponseIdx = (form.columns[0].userResponses.length) - 1;
+            form.columns[colIdx].userResponses.splice(
+                lastUserResponseIdx,
+                1,
+                userResponse
+            )
             localStorage.setItem("forms", JSON.stringify(forms));
             updateUserResponseSpan(userResponse, colIdx);
             dom.showDiv(["addRow_d"]);

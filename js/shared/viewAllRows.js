@@ -9,7 +9,8 @@ export function viewAllRows(dom) {
         headersTr.append(th);
     })
     dom.els.viewAllRows_d_table.append(headersTr);
-    for (let i = 0; i < form.numberOfRows; i++) {
+    const lengthOfUserResponsesArrays = (form.columns[0].userResponses.length);
+    for (let i = 0; i < lengthOfUserResponsesArrays; i++) {
         const tr = document.createElement("tr");
         form.columns.forEach(column => {
             const td = document.createElement("td");

@@ -22,7 +22,7 @@ export function colHeading_d(dom) {
             const col = {};
             col.heading = colHeading;
             col.questions = [];
-            col.userResponses = {};
+            col.userResponses = [];
             const colIdx = (form.columns.push(col) - 1);
             forms.activeIdxs.column = colIdx;
             localStorage.setItem("forms", JSON.stringify(forms));

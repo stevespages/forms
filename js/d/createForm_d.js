@@ -17,7 +17,6 @@ export function createForm_d(dom) {
                 return;
             }
             const newForm = {
-                numberOfRows: 0,
                 columns: [],
             };
             newForm.formFileNamePrefix = fileNamePrefix;

@@ -4,7 +4,7 @@ export function formMenu_d(dom, showForm, viewAllRows) {
         if (event.target.id === "formMenu_dAddRow_btn") {
             const forms = JSON.parse(localStorage.getItem("forms"));
             const form = forms.formsArr[forms.activeIdxs.form];
-            form.numberOfRows++;
+            pushNullToAllUserResponses(form);
             localStorage.setItem("forms", JSON.stringify(forms));
             dom.els.addRow_d_h2.textContent = form.title;
             dom.els.addRow_d_ul.innerHTML = "";
@@ -37,10 +37,21 @@ export function formMenu_d(dom, showForm, viewAllRows) {
             showForm(dom);
             dom.showDiv(["showForm_d", "showForm_dInner_d"]);
         }
+        // this should not be needed as it is an anchor element
+        if (event.target.id === "formMenu_dEmailRows_btn") {
+
+        }
         if (event.target.id === "formMenu_dView_btn") {
             viewAllRows(dom);
             dom.showDiv(["viewAllRows_d"])
         }
     })
 
+}
+
+// this effectively adds an empty row
+function pushNullToAllUserResponses(form) {
+    form.columns.forEach(col => {
+        col.userResponses.push(null);
+    })
 }
