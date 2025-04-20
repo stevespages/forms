@@ -15,6 +15,15 @@
         .user-response-span {
             color: green;
         }
+        h1 {
+            font-size: 1.4em;
+        }
+        h2 {
+            font-size: 1.2em;
+        }
+        button, li {
+            margin-bottom: 14px;
+        }
     </style>
     <title>forms</title>
 </head>
@@ -58,16 +67,22 @@
             <button id="formMenu_dEdit_btn">edit form</button>
             <button id="formMenu_dEmailForm_btn">
                 <a id="formMenu_dEmailForm_btn_a" target="_blank">
-                    email form
+                    email form (JSON)
+                </a>
+            </button>
+            <button id="formMenu_dEmailFormAndRows_btn">
+                <a id="formMenu_dEmailFormAndRows_btn_a" target="_blank">
+                    email form and rows (JSON)
                 </a>
             </button>
             <button id="formMenu_dEmailRows_btn">
-                <a id="formMenu_dEmailForm_btn_a" target="_blank">
-                    email rows
+                <a id="formMenu_dEmailRows_btn_a" target="_blank">
+                    email rows (CSV)
                 </a>
             </button>
-            <button id="formMenu_dJsonAll_btn">JSON all</button>
-            <button id="formMenu_dJsonFormOnly_btn">JSON form only</button>
+            <button id="formMenu_dSeeForm_btn">see form (JSON)</button>
+            <button id="formMenu_dSeeFormAndRows_btn">see form and rows (JSON)</button>
+            <button id="formMenu_dSeeRows_btn">see rows (CSV)</button>
             <button id="formMenu_dView_btn">view</button>
     </div>
 
@@ -80,9 +95,13 @@
 
     <div id="mainMenu_d" data-code-comment="from home_d">
         <button id="mainMenu_dCancel_btn">cancel</button>
-
         <button id="mainMenu_dCreateForm_btn">create form</button>
         <button id="mainMenu_dUploadJsonForm_btn">upload JSON form</button>
+    </div>
+
+    <div id="see_d">
+        <button id="see_dCancel_btn">cancel</button>
+        <section id="see_d_section"></section>
     </div>
 
     <div id="viewAllRows_d">
@@ -120,10 +139,11 @@
 
     <div id="question_d" data-code-comment="from colHeading_d">
         <button id="question_dCancel_btn">cancel</button>
-        <button value="checkbox">Checkbox</button>
-        <button value="date">Date</button>
-        <button value="radio">Radio</button>
-        <button value="text">Text</button>
+        <button id="question_dCheckbox_btn">checkbox</button>
+        <button id="question_dDate_btn">date</button>
+        <button id="question_dOrderItems_btn">order items</button>
+        <button id="question_dRadio_btn">radio</button>
+        <button id="question_dText_btn">text</button>
     </div>
 
     <div id="qChoice_d" data-code-comment="from question_d">
@@ -160,6 +180,18 @@
                 >
             </label>
         <button class="q-ok-btn" id="qDate_dOk_btn">ok</button>
+    </div>
+
+    <div id="qOrderItems_d" data-code-comment="from question_d">
+        <button id="qOrderItems_dCancel_btn">cancel</button>
+        <h2>Order Items Question</h2>
+        <button class="q-ok-btn" id="qOrderItems_dOk_btn">ok</button>
+        <label>
+            Items To Put in Order
+            <input id="qOrderItems_d_inp">
+        </label>
+        <button id="qOrderItems_dOrderItemOk_btn">ok</button>
+        <ul id="qOrderItems_d_ul"></ul>
     </div>
 
     <div id="qText_d" data-code-comment="from question_d">

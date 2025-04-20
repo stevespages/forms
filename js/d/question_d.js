@@ -5,20 +5,23 @@ export function question_d(dom) {
 
             //dom.showDiv([""])
         }
-        if (event.target.value === "checkbox") {
+        if (event.target.id === "question_dCheckbox_btn") {
             dom.els.qChoice_d_h2.innerHTML = "Choice Question (checkbox)";
             dom.els.qChoice_dOk_btn.dataset.type = "checkbox";
             dom.showDiv(["qChoice_d"]);
         }
-        if (event.target.value === "date") {
+        if (event.target.id === "question_dDate_btn") {
             dom.showDiv(["qDate_d"]);
         }
-        if (event.target.value === "radio") {
+        if (event.target.id === "question_dOrderItems_btn") {
+            dom.showDiv(["qOrderItems_d"]);
+        }
+        if (event.target.id === "question_dRadio_btn") {
             dom.els.qChoice_d_h2.innerHTML = "Choice Question (radio)";
             dom.els.qChoice_dOk_btn.dataset.type = "radio";
             dom.showDiv(["qChoice_d"]);
         }
-        if (event.target.value === "text") {
+        if (event.target.id === "question_dText_btn") {
             dom.showDiv(["qText_d"]);
         }
     });

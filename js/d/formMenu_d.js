@@ -1,4 +1,4 @@
-export function formMenu_d(dom, showForm, viewAllRows) {
+export function formMenu_d(dom, makeCsv, showForm, viewAllRows) {
 
     dom.els.formMenu_d.addEventListener("click", event => {
         if (event.target.id === "formMenu_dAddRow_btn") {
@@ -24,6 +24,11 @@ export function formMenu_d(dom, showForm, viewAllRows) {
         if (event.target.id === "formMenu_dCancel_btn") {
             dom.showDiv(["home_d"]);
         }
+        if (event.target.id === "formMenu_dSeeRows_btn") {
+            const csvForHtml = makeCsv("for HTML");
+            dom.els.see_d_section.append(csvForHtml.headerP, csvForHtml.dataSection);
+            dom.showDiv(["see_d"]);
+        }
         if (event.target.id === "formMenu_dDelete_btn") {
             const forms = JSON.parse(localStorage.getItem("forms"));
             const formIdx = forms.activeIdxs.form;
@@ -36,10 +41,6 @@ export function formMenu_d(dom, showForm, viewAllRows) {
         if (event.target.id === "formMenu_dEdit_btn") {
             showForm(dom);
             dom.showDiv(["showForm_d", "showForm_dInner_d"]);
-        }
-        // this should not be needed as it is an anchor element
-        if (event.target.id === "formMenu_dEmailRows_btn") {
-
         }
         if (event.target.id === "formMenu_dView_btn") {
             viewAllRows(dom);

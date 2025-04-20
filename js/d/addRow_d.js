@@ -1,7 +1,6 @@
 export function addRow_d(dom) {
 
     dom.els.addRow_d.addEventListener("click", event => {
-        console.log("click!")
         if (event.target.classList.contains("addRow_d_ul_li")) {
             const forms = JSON.parse(localStorage.getItem("forms"));
             const form = forms.formsArr[forms.activeIdxs.form];
@@ -27,19 +26,15 @@ export function addRow_d(dom) {
 }
 
 function makeQuestion(question) {
-    if (question.category === "text") {
-        return makeTextQuestion(question);
-    }
     if (question.category === "date") {
         return makeDateQuestion(question);
     }
-}
-
-function makeTextQuestion(question) {
-    const textInp = document.createElement("input");
-    textInp.setAttribute("type", "text");
-    textInp.setAttribute("name", "textInp");
-    return textInp;
+    if (question.category === "orderItems") {
+        return makeOrderItemsQuestion(question);
+    }
+    if (question.category === "text") {
+        return makeTextQuestion(question);
+    }
 }
 
 function makeDateQuestion(question) {
@@ -57,6 +52,37 @@ function makeDateQuestion(question) {
     }
     dateInp.setAttribute("name", "dateInp");
     return dateInp;
+}
+
+function makeOrderItemsQuestion(question) {
+    const section = document.createElement("section");
+    const h3 = document.createElement("h3");
+    h3.textContent = "Click items in order"
+    section.append(h3);
+    const ul = document.createElement("li");
+    question.values.forEach(value => {
+        const li = document.createElement("li");
+        li.classList.add("orderItemsQuestionLi");
+        li.textContent = value;
+        ul.append(li);
+    })
+    section.append(ul);
+    const orderedItemsP = document.createElement("p");
+    orderedItemsP.setAttribute("id", "orderedItemsP");
+    section.append(orderedItemsP);
+    const orderedItemsInp = document.createElement("input");
+    orderedItemsInp.setAttribute("id", "orderedItemsInp");
+    orderedItemsInp.setAttribute("name", "orderedItemsInp");
+    orderedItemsInp.classList.add("hide");
+    section.append(orderedItemsInp);
+    return section;
+}
+
+function makeTextQuestion(question) {
+    const textInp = document.createElement("input");
+    textInp.setAttribute("type", "text");
+    textInp.setAttribute("name", "textInp");
+    return textInp;
 }
 
 function dateForShowCurrent(includeTimeOrNot) {
